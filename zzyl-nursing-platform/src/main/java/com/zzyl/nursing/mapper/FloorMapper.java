@@ -2,6 +2,7 @@ package com.zzyl.nursing.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zzyl.nursing.domain.Floor;
+import com.zzyl.nursing.vo.FloorVo;
 import com.zzyl.nursing.vo.TreeVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -77,4 +78,10 @@ public interface FloorMapper extends BaseMapper<Floor>
      * @return 结果
      */
     List<TreeVo> getRoomAndBedByBedStatus(@Param("status") Integer status);
+
+    /**
+     * 查询所有有智能设备的楼层
+     * @return 列表
+     */
+    List<FloorVo> getAllFloorsWithDevice();
 }

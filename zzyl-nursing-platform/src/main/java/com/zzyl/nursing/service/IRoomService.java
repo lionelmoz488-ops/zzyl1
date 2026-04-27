@@ -74,4 +74,11 @@ public interface IRoomService extends IService<Room>
      * @return  结果
      */
     RoomVo getRoomById(Long id);
+
+    /**
+     * 根据楼层id获取房间中的智能设备及数据
+     * @param floorId 楼层id
+     * @return 结果
+     */
+    List<RoomVo> getRoomsWithDeviceByFloorId(Long floorId);
 }

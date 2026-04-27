@@ -61,4 +61,24 @@ public class CacheConstants
      * 体检报告缓存key
      */
     public static final String HEALTH_REPORT = "healthReport";
+
+    /**
+     * 物联网平台产品列表缓存key
+     */
+    public static final String IOT_ALL_PRODUCT_LIST = "iot:all_product_list";
+
+    /**
+     * 物联网平台设备最新数据缓存key
+     */
+    public static final String IOT_DEVICE_LAST_DATA = "iot:device_last_data";
+
+    /**
+     * 报警触发次数缓存key
+     */
+    public static final String ALERT_TRIGGER_COUNT_PREFIX = "iot:alert_trigger_count:";
+
+    /**
+     * 报警沉默周期缓存key
+     */
+    public static final String ALERT_SILENT_PREFIX = "iot:alert_silent_prefix:";
 }
