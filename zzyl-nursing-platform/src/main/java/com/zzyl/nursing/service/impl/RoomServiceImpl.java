@@ -99,4 +99,14 @@ public class RoomServiceImpl extends ServiceImpl<RoomMapper, Room> implements IR
     public List<RoomVo> getRoomsWithNurByFloorId(Long floorId) {
         return roomMapper.selectByFloorIdWithNur(floorId);
     }
+
+    /**
+     * 根据id获取房间详细信息
+     * @param id
+     * @return
+     */
+    @Override
+    public RoomVo getRoomVoById(Long id) {
+        return roomMapper.getRoomVoById(id);
+    }
 }

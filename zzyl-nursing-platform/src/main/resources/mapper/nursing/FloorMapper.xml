@@ -89,4 +89,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         group by f.id
         order by code, create_time desc
     </select>
+
+    <resultMap id="TreeVoMap" type="com.zzyl.nursing.vo.TreeVo">
+        <id  property="value" column="fid"/>
+        <result property="label" column="fname"/>
+        <collection property="children" ofType="com.zzyl.nursing.vo.TreeVo">
+            <id  property="value" column="rid"/>
+            <result property="label" column="rcode"/>
+            <collection property="children" ofType="com.zzyl.nursing.vo.TreeVo">
+                <id  property="value" column="bid"/>
+                <result property="label" column="bnumber"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <!-- 根据床位状态获取所有楼层数据楼层 -->
+    <select id="getRoomAndBedByBedStatus" resultMap="TreeVoMap">
+        select f.id fid, f.name fname, r.id rid, r.code rcode, b.id bid, b.bed_number bnumber
+        from floor f left join room r on f.id = r.floor_id
+        left join bed b on r.id = b.room_id
+        where b.bed_status = #{status}
+        order by f.id, r.id, b.id
+    </select>
 </mapper>
