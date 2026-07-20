@@ -2,6 +2,8 @@ package com.zzyl.nursing.service.impl;
 
 import java.util.Arrays;
 import java.util.List;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.zzyl.common.utils.DateUtils;
 import com.zzyl.nursing.vo.NursingLevelVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,5 +106,16 @@ public class NursingLevelServiceImpl extends ServiceImpl<NursingLevelMapper, Nur
     @Override
     public List<NursingLevelVo> selectNursingLevelVoList(NursingLevel nursingLevel) {
         return nursingLevelMapper.selectNursingLevelVoList(nursingLevel);
+    }
+
+    /**
+     * 查询所有启用状态的护理等级
+     * @return 列表
+     */
+    @Override
+    public List<NursingLevel> listAll() {
+        LambdaQueryWrapper<NursingLevel> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(NursingLevel::getStatus, 1);
+        return list(queryWrapper);
     }
 }

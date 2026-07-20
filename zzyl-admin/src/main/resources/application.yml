@@ -68,7 +68,7 @@ spring:
   # redis 配置
   redis:
     # 地址
-    host: 192.168.100.168
+    host: 192.168.80.100
     # 端口，默认为6379
     port: 6379
     # 数据库索引
@@ -136,7 +136,7 @@ xss:
 aliyun:
   oss:
     endpoint: https://oss-cn-beijing.aliyuncs.com
-    bucketName: zznursing
+    bucketName: zzyl-ai-my
 
 dept:
   nursingId: 201

@@ -2,7 +2,9 @@ package com.zzyl.nursing.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zzyl.nursing.domain.Floor;
+import com.zzyl.nursing.vo.TreeVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -68,4 +70,11 @@ public interface FloorMapper extends BaseMapper<Floor>
      * @return 结果
      */
     List<Floor> selectAllByNur();
+
+    /**
+     * 根据床位状态查询获取所有楼层数据
+     * @param status
+     * @return
+     */
+    List<TreeVo> getRoomAndBedByBedStatus(@Param("status") Integer status);
 }
