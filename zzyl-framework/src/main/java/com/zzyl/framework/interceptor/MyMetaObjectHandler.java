@@ -27,12 +27,16 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     }
 
     public Long getLoginUserId() {
-        // 获取到当前登录人的信息
-        LoginUser loginUser = SecurityUtils.getLoginUser();
-        if (ObjectUtils.isNotEmpty(loginUser)) {
-            return loginUser.getUserId();
+        try {
+            // 获取到当前登录人的信息
+            LoginUser loginUser = SecurityUtils.getLoginUser();
+            if (ObjectUtils.isNotEmpty(loginUser)) {
+                return loginUser.getUserId();
+            }
+            return 1L;
+        } catch (Exception e) {
+            return 1L;
         }
-    	return 1L;
     }
 
 }
