@@ -136,7 +136,7 @@ xss:
 aliyun:
   oss:
     endpoint: https://oss-cn-beijing.aliyuncs.com
-    bucketName: zznursing
+    bucketName: java-ai-1433223
 
 dept:
   nursingId: 201

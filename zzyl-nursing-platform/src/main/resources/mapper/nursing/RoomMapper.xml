@@ -121,6 +121,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
 
+    <select id="getRoomById" resultType="com.zzyl.nursing.vo.RoomVo">
+        select f.name as floorName, f.id as floorId,r.id as roomId,r.code ,rt.price
+        from floor f
+                left join room r on f.id = r.floor_id
+                left join room_type rt on rt.name = r.type_name
+        where r.id = #{id}
+    </select>
+
+
     <insert id="insertRoom" parameterType="Room" useGeneratedKeys="true" keyProperty="id">
         insert into room
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -172,7 +181,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <delete id="deleteRoomByIds" parameterType="String">
         delete from room where id in 
-        <foreach item="id" collection="array" open="(" separator="," close=")">
+        <foreach item="id" collection="ids" open="(" separator="," close=")">
             #{id}
         </foreach>
     </delete>

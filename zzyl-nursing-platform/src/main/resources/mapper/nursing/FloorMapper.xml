@@ -74,7 +74,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <delete id="deleteFloorByIds" parameterType="String">
         delete from floor where id in 
-        <foreach item="id" collection="array" open="(" separator="," close=")">
+        <foreach item="id" collection="ids" open="(" separator="," close=")">
             #{id}
         </foreach>
     </delete>
@@ -88,5 +88,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where b.bed_status = 1
         group by f.id
         order by code, create_time desc
+    </select>
+
+    <resultMap id="TreeVoResultMap" type="com.zzyl.nursing.vo.TreeVo">
+        <id property="value" column="fid"/>
+        <result property="label" column="fname"/>
+        <collection property="children" ofType="com.zzyl.nursing.vo.TreeVo" column="bname">
+            <id property="value" column="rid"/>
+            <result property="label" column="rname"/>
+            <collection property="children" ofType="com.zzyl.nursing.vo.TreeVo" column="bname">
+                <id property="value" column="bid"/>
+                <result property="label" column="bname"/>
+            </collection>
+        </collection>
+
+    </resultMap>
+
+    <select id="getRoomAndBedByBedStatus" resultMap="TreeVoResultMap">
+        select f.id as fid,
+               f.name as fname,
+               r.id as rid,
+               r.code as rname,
+               b.id as bid,
+               b.bed_number as bname
+        from floor f
+        left join room r on r.floor_id = f.id
+        left join bed b on b.room_id = r.id
+        where b.bed_status = #{status}
+        order by f.id, r.id, b.id
     </select>
 </mapper>

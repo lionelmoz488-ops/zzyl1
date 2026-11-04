@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zzyl.nursing.domain.Floor;
 import com.zzyl.nursing.mapper.FloorMapper;
 import com.zzyl.nursing.service.IFloorService;
+import com.zzyl.nursing.vo.TreeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -90,4 +91,16 @@ public class FloorServiceImpl extends ServiceImpl<FloorMapper, Floor> implements
         return floorMapper.selectAllByNur();
     }
 
+    /**
+     * 根据床位状态获取房间和床位信息
+     *
+     * @param status
+     * @return
+     */
+    @Override
+    public List<TreeVo> getRoomAndBedByBedStatus(Integer status) {
+
+        return floorMapper.getRoomAndBedByBedStatus(status);
+
+    }
 }
