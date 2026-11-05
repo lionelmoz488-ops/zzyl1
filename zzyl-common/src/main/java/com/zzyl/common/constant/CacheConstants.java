@@ -48,4 +48,9 @@ public class CacheConstants
     public static final String CACHE_NURSING_LEVEL_ALL = "nursinglevel:all";
     public static final String CACHE_NURSING_PLAN_ALL = "nursingplan:all";
     public static final String CACHE_NURSING_PROJECT_ALL = "nursingproject:all";
+
+    /**
+     * 健康评估缓存 redis key
+     */
+    public static final String HEALTH_ASSESSMENT_CACHE = "healthAssessment:";
 }

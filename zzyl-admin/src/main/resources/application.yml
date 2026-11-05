@@ -140,3 +140,9 @@ aliyun:
 
 dept:
   nursingId: 201
+
+# deepseek大模型配置
+deepseek:
+  api-key: ${DEEPSEEK_API_KEY}
+  baseUrl: https://api.deepseek.com
+  model: deepseek-flash
